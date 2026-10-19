@@ -1,0 +1,30 @@
+{
+  "geode": "v5.11.2",
+  "gd": { "win": "2.2081" },
+  "id": "local.predictive-safe-click",
+  "name": "Predictive Safe Click",
+  "version": "v0.1.0",
+  "developer": "Local",
+  "description": "Experimental cube-only predictive jump buffer. Delays early clicks up to N physics ticks; if none is predicted safe, fires at the limit.",
+  "tags": ["gameplay", "offline", "cheat"],
+  "settings": {
+    "enabled": {
+      "type": "bool", "default": true, "name": "Enabled",
+      "description": "Use only on test levels first. Prediction is approximate."
+    },
+    "max-delay": {
+      "type": "int", "default": 4, "min": 0, "max": 12,
+      "name": "Maximum buffering ticks",
+      "description": "At 240 TPS, four ticks are about 16.7 milliseconds."
+    },
+    "diagnostics": {
+      "type": "bool", "default": false, "name": "Diagnostic log",
+      "description": "Log buffered and injected jumps to the Geode log file."
+    },
+    "margin": {
+      "type": "float", "default": 0.6, "min": 0.0, "max": 3.0,
+      "name": "Collision margin",
+      "description": "Extra world units around the modeled cube rectangle."
+    }
+  }
+}

@@ -1,0 +1,175 @@
+# SELF-CONTAINED: no source uploads or folders to rearrange.
+# Paste this entire file into your existing GitHub Actions workflow and commit.
+# This workflow ALWAYS builds the bundled Predictive Safe Click project,
+# ignoring any old XINPUT9_1_0 DLL or other source in the repository.
+name: SAFE CLICK - ONE FILE BUILDER
+
+'on':
+  workflow_dispatch:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  make-geode:
+    runs-on: windows-latest
+    steps:
+      - name: Unpack the real mod (no source files to upload)
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          $payload = @'
+          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
+          AAAAAAUABQAyAQAAZhoAAAAA
+          '@
+          $bytes = [Convert]::FromBase64String(($payload -replace "\s", ""))
+          $expected = "41b3095030020ed82ac71540b1e040787c4dff4560af1482f88c23da3de9e78d"
+          $actual = [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($bytes)).ToLowerInvariant()
+          if ($actual -ne $expected) { throw "Source copy was corrupted. Paste the complete workflow." }
+          $archive = Join-Path $env:RUNNER_TEMP "safe-click-source.zip"
+          [IO.File]::WriteAllBytes($archive, $bytes)
+          $dest = Join-Path $env:GITHUB_WORKSPACE "safeclick-project"
+          New-Item -ItemType Directory -Force -Path $dest | Out-Null
+          Expand-Archive -LiteralPath $archive -DestinationPath $dest -Force
+          if (!(Test-Path (Join-Path $dest "src/Main.cpp"))) { throw "Missing mod source" }
+          Write-Host "Correct project is ready. Old repo files were ignored."
+
+      - name: Build actual Windows Geode mod
+        id: geode
+        uses: geode-sdk/build-geode-mod@main
+        with:
+          path: safeclick-project
+          sdk: 5.11.2
+          target: Win64
+          bindings-ref: codegen
+
+      - name: Upload installable mod
+        uses: actions/upload-artifact@v4
+        with:
+          name: SAFECLICK-GEODE-INSTALL-THIS
+          path: ${{ steps.geode.outputs.build-output }}/*.geode
+          if-no-files-found: error
